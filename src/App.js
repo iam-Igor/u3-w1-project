@@ -3,6 +3,7 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import "./App.css";
 import Myheader from "./components/MyHeader";
 import MainContent from "./components/MainContent";
+import MyFooter from "./components/MyFooter";
 
 function App() {
   return (
@@ -10,6 +11,7 @@ function App() {
       <MyNavbar />
       <Myheader />
       <MainContent />
+      <MyFooter />
     </div>
   );
 }

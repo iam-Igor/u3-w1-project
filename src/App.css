@@ -3,7 +3,7 @@
 .movie-row {
   display: flex;
   flex-wrap: nowrap;
-  overflow: hidden;
+
   height: 25vh;
 }
 
@@ -22,4 +22,28 @@
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
+}
+
+.right {
+  left: 96%;
+  bottom: 50%;
+  cursor: pointer;
+}
+
+.left {
+  bottom: 50%;
+  cursor: pointer;
+}
+
+@media screen and (max-width: 480px) {
+  .right {
+    left: 90%;
+    bottom: 60%;
+    cursor: pointer;
+  }
+
+  .left {
+    bottom: 60%;
+    cursor: pointer;
+  }
 }
