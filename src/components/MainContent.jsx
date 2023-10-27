@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import { Col, Container, Row, Spinner, Alert } from "react-bootstrap";
 
 class MainContent extends Component {
+  // INIZIALIZZO TANTI ARRAY VUOTI QUANTE SONO LE ROW DA VISUALIZZARE NEL MAIN
   state = {
     Search1: [],
     Search2: [],
@@ -13,6 +14,8 @@ class MainContent extends Component {
     errorToShow: "",
     searchIndex: "",
   };
+
+  //   USO I PARAMTERI DELLA FUNZIONE COME ENDPOINT DELLA URL E NOME DELL'ARRAY DA MAPPARE NEL .THEN
 
   getMovies = (searchIndex, StateName) => {
     fetch(`http://www.omdbapi.com/?apikey=556b8878&s=${searchIndex}`)
@@ -27,6 +30,7 @@ class MainContent extends Component {
       .then((data) => {
         console.log(data);
         this.setState({
+          // STATE NAME ASSUMERA IL VALORE DESIDERATO
           [StateName]: data.Search.map((movie) => ({
             Title: movie.Title,
             Year: movie.Year,
@@ -46,6 +50,7 @@ class MainContent extends Component {
   };
 
   componentDidMount() {
+    // LANCIO LA FUNZIONE PASSANDOO NEI PARAMETRI L'ENDPOINT DA FETCHARE E L'ARRAY DA MAPPARE
     this.getMovies("the%20lord", "Search1");
     this.getMovies("harry%20potter", "Search2");
     this.getMovies("batman", "Search3");
@@ -67,6 +72,8 @@ class MainContent extends Component {
             </div>
           )}
           <h1 className="text-white fs-4 mb-3">Based on your activity</h1>
+
+          {/* PER OGNI ROW MAPPO L'ARRAY CORRISPONDENTE */}
 
           <Row className="movie-row position-relative">
             <i className="bi bi-chevron-left text-white position-absolute fs-1 left"></i>
