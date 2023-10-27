@@ -8,7 +8,6 @@ import {
   Dropdown,
   Form,
 } from "react-bootstrap";
-import MainContent from "./MainContent";
 
 class MyNavbar extends Component {
   state = {
