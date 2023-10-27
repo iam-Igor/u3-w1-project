@@ -11,6 +11,7 @@ class MainContent extends Component {
     isLoading: true,
     isThereAnError: false,
     errorToShow: "",
+    searchIndex: "",
   };
 
   getMovies = (searchIndex, StateName) => {
