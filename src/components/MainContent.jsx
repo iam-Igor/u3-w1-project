@@ -9,13 +9,13 @@ class MainContent extends Component {
     Search3: [],
     Search4: [],
     Search5: [],
+    Search6: [],
     isLoading: true,
     isThereAnError: false,
     errorToShow: "",
-    searchIndex: "",
   };
 
-  //   USO I PARAMTERI DELLA FUNZIONE COME ENDPOINT DELLA URL E NOME DELL'ARRAY DA MAPPARE NEL .THEN
+  //   USO I PARAMETRI DELLA FUNZIONE COME ENDPOINT DELLA URL E NOME DELL'ARRAY DA MAPPARE NEL .THEN
 
   getMovies = (searchIndex, StateName) => {
     fetch(`http://www.omdbapi.com/?apikey=556b8878&s=${searchIndex}`)
@@ -39,6 +39,7 @@ class MainContent extends Component {
             Poster: movie.Poster,
           })),
           isLoading: false,
+          searchIndex: this.props.search,
         });
       })
       .catch((err) => {
@@ -47,6 +48,10 @@ class MainContent extends Component {
           errorToShow: err.toString(),
         });
       });
+  };
+
+  handleSearch = () => {
+    this.getMovies(this.props.search, "Search6");
   };
 
   componentDidMount() {
@@ -71,10 +76,42 @@ class MainContent extends Component {
               <Spinner animation="border" variant="danger" />
             </div>
           )}
-          <h1 className="text-white fs-4 mb-3">Based on your activity</h1>
+
+          {/* OTTENGO LA PROP PASSATA DAL FORM SU MY NAVBAR E SE IL VALUE DELL'INPUT è DIVERSO DA STRINGA VUOTA COMPARE UNA RIGA AGGIUNTIVA CHE AL CLUCK DEL TAG SMALL ESEGUE FETCH IN BASE ALLA RICERCA */}
+
+          {this.props.search !== "" && (
+            <>
+              <h1 className="text-white fs-4 mb-3">
+                You searched:
+                <span className="text-danger"> {this.props.search} </span>
+                <small onClick={this.handleSearch}>Click to show movies</small>
+              </h1>
+
+              <Row className="movie-row position-relative">
+                <i className="bi bi-chevron-left text-white position-absolute fs-1 left"></i>
+                {this.state.Search6.map((movie, index) => (
+                  <Col
+                    key={index}
+                    lg={2}
+                    md={3}
+                    xs={6}
+                    className="movie-column"
+                  >
+                    <img
+                      src={movie.Poster}
+                      alt={movie.Title}
+                      className="img-fluid"
+                    />
+                    <p className="text-white">{movie.Title}</p>
+                  </Col>
+                ))}
+                <i className="bi bi-chevron-right text-white position-absolute fs-1 right"></i>
+              </Row>
+            </>
+          )}
 
           {/* PER OGNI ROW MAPPO L'ARRAY CORRISPONDENTE */}
-
+          <h1 className="text-white fs-4 mb-3">Based on your activity</h1>
           <Row className="movie-row position-relative">
             <i className="bi bi-chevron-left text-white position-absolute fs-1 left"></i>
             {this.state.Search1.map((movie, index) => (

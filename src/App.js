@@ -9,8 +9,8 @@ function App() {
   return (
     <div className="container-fluid p-0 bg-black">
       <MyNavbar />
-      <Myheader />
-      <MainContent />
+      {/* <Myheader /> */}
+      {/* <MainContent /> */}
       <MyFooter />
     </div>
   );

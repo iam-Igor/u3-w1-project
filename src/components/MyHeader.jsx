@@ -4,7 +4,7 @@ import Dropdown from "react-bootstrap/Dropdown";
 const Myheader = () => {
   return (
     <header>
-      <Container fluid className="bg-dark text-white pb-2">
+      <Container fluid className="bg-black text-white pb-2">
         <Row className="align-items-center">
           <Col xs={4} md={2}>
             <h1 className="fs-5">TV Shows</h1>
