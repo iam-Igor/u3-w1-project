@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import { Col, Container, Row, Spinner, Alert } from "react-bootstrap";
+import Gallery from "./Gallery";
 
 class MainContent extends Component {
   // INIZIALIZZO TANTI ARRAY VUOTI QUANTE SONO LE ROW DA VISUALIZZARE NEL MAIN
@@ -102,46 +103,18 @@ class MainContent extends Component {
                 <span className="text-danger"> {this.props.search} </span>
                 <small onClick={this.handleSearch}>Click to show movies</small>
               </h1>
-
-              <Row className="movie-row position-relative">
-                <i className="bi bi-chevron-left text-white position-absolute fs-1 left"></i>
-                {this.state.Search6.map((movie, index) => (
-                  <Col
-                    key={index}
-                    lg={2}
-                    md={3}
-                    xs={6}
-                    className="movie-column"
-                  >
-                    <img
-                      src={movie.Poster}
-                      alt={movie.Title}
-                      className="img-fluid"
-                    />
-                    <p className="text-white">{movie.Title}</p>
-                  </Col>
-                ))}
-                <i className="bi bi-chevron-right text-white position-absolute fs-1 right"></i>
-              </Row>
+              <Gallery data={this.state.Search6} />
             </>
           )}
 
           {/* PER OGNI ROW MAPPO L'ARRAY CORRISPONDENTE */}
           <h1 className="text-white fs-4 mb-3">Based on your activity</h1>
-          <Row className="movie-row position-relative">
-            <i className="bi bi-chevron-left text-white position-absolute fs-1 left"></i>
-            {this.state.Search1.map((movie, index) => (
-              <Col key={index} lg={2} md={3} xs={6} className="movie-column">
-                <img
-                  src={movie.Poster}
-                  alt={movie.Title}
-                  className="img-fluid"
-                />
-                <p className="text-white">{movie.Title}</p>
-              </Col>
-            ))}
-            <i className="bi bi-chevron-right text-white position-absolute fs-1 right"></i>
-          </Row>
+          {this.state.isLoading && (
+            <div className="text-center">
+              <Spinner animation="border" variant="danger" />
+            </div>
+          )}
+          <Gallery data={this.state.Search1} />
 
           {this.state.isLoading && (
             <div className="text-center">
@@ -149,80 +122,31 @@ class MainContent extends Component {
             </div>
           )}
           <h1 className="text-white fs-4 mb-3">Rewatch Harry Potter</h1>
-          <Row className="movie-row position-relative">
-            <i className="bi bi-chevron-left text-white position-absolute fs-1 left"></i>
-            {this.state.Search2.map((movie, index) => (
-              <Col key={index} lg={2} md={3} xs={6} className="movie-column">
-                <img
-                  src={movie.Poster}
-                  alt={movie.Title}
-                  className="img-fluid"
-                />
-                <p className="text-white">{movie.Title}</p>
-              </Col>
-            ))}
-            <i className="bi bi-chevron-right text-white position-absolute fs-1 right"></i>
-          </Row>
+          <Gallery data={this.state.Search2} />
+
           {this.state.isLoading && (
             <div className="text-center">
               <Spinner animation="border" variant="danger" />
             </div>
           )}
           <h1 className="text-white fs-4 mb-3">Suggested by Netflix</h1>
-          <Row className="movie-row position-relative">
-            <i className="bi bi-chevron-left text-white position-absolute fs-1 left"></i>
-            {this.state.Search3.map((movie, index) => (
-              <Col key={index} lg={2} md={3} xs={6} className="movie-column">
-                <img
-                  src={movie.Poster}
-                  alt={movie.Title}
-                  className="img-fluid"
-                />
-                <p className="text-white">{movie.Title}</p>
-              </Col>
-            ))}
-            <i className="bi bi-chevron-right text-white position-absolute fs-1 right"></i>
-          </Row>
+          <Gallery data={this.state.Search3} />
+
           {this.state.isLoading && (
             <div className="text-center">
               <Spinner animation="border" variant="danger" />
             </div>
           )}
           <h1 className="text-white fs-4 mb-3">Movie must see in the life</h1>
-          <Row className="movie-row position-relative">
-            <i className="bi bi-chevron-left text-white position-absolute fs-1 left"></i>
-            {this.state.Search4.map((movie, index) => (
-              <Col key={index} lg={2} md={3} xs={6} className="movie-column">
-                <img
-                  src={movie.Poster}
-                  alt={movie.Title}
-                  className="img-fluid"
-                />
-                <p className="text-white">{movie.Title}</p>
-              </Col>
-            ))}
-            <i className="bi bi-chevron-right text-white position-absolute fs-1 right"></i>
-          </Row>
+          <Gallery data={this.state.Search4} />
+
           {this.state.isLoading && (
             <div className="text-center">
               <Spinner animation="border" variant="danger" />
             </div>
           )}
           <h1 className="text-white fs-4 mb-3">Watch Again</h1>
-          <Row className="movie-row position-relative">
-            <i className="bi bi-chevron-left text-white position-absolute fs-1 left"></i>
-            {this.state.Search5.map((movie, index) => (
-              <Col key={index} lg={2} md={3} xs={6} className="movie-column">
-                <img
-                  src={movie.Poster}
-                  alt={movie.Title}
-                  className="img-fluid"
-                />
-                <p className="text-white">{movie.Title}</p>
-              </Col>
-            ))}
-            <i className="bi bi-chevron-right text-white position-absolute fs-1 right"></i>
-          </Row>
+          <Gallery data={this.state.Search5} />
         </Container>
       </main>
     );
