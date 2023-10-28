@@ -23,8 +23,24 @@ class MainContent extends Component {
         if (res.ok) {
           console.log("res ok!", res);
           return res.json();
+        } else if (res.status === 400) {
+          throw new Error("400 - Bad request");
+        } else if (res.status === 401) {
+          throw new Error("401 - Unauthorized");
+        } else if (res.status === 401) {
+          throw new Error("404 - Not Found");
+        } else if (res.status === 408) {
+          throw new Error("408 - Request Timeout");
+        } else if (res.status === 429) {
+          throw new Error("429 - Too Many Requests");
+        } else if (res.status === 500) {
+          throw new Error("500 - Internal Server Error");
+        } else if (res.status === 502) {
+          throw new Error("502 - Bad Gateway");
+        } else if (res.status === "failed") {
+          throw new Error("Error in fetching data");
         } else {
-          throw new Error();
+          throw new Error("Generic error, try again later");
         }
       })
       .then((data) => {
@@ -67,7 +83,7 @@ class MainContent extends Component {
     return (
       <main className="mb-5">
         {this.state.isThereAnError && (
-          <Alert variant="danger">{this.state.errorToShow.slice(0, 9)}</Alert>
+          <Alert variant="danger">{this.state.errorToShow}</Alert>
         )}
 
         <Container fluid className="mt-3">

@@ -96,33 +96,32 @@ class MyNavbar extends Component {
                       <p className="navFont text-white mb-0 me-2">KIDS</p>
                       <i className="bi bi-bell-fill me-2"></i>
                     </Col>
-                    <Col className="col p-0 drop-start">
-                      <div>
+                    <Col className="p-0">
+                      <Dropdown drop="start">
                         <Dropdown.Menu>
                           <Dropdown.Item eventKey="1" href="account.html">
                             Account
                           </Dropdown.Item>
-
                           <Dropdown.Item eventKey="2" href="#">
                             Language
                           </Dropdown.Item>
-
                           <Dropdown.Item eventKey="3">
                             Notifications
                           </Dropdown.Item>
                         </Dropdown.Menu>
-                      </div>
-
-                      <img
-                        src="https://cdn4.iconfinder.com/data/icons/avatars-xmas-giveaway/128/batman_hero_avatar_comics-512.png"
-                        alt="Logo"
-                        width="30"
-                        height="30"
-                        className="d-inline-block align-text-top dropdown-toggle"
-                        as={ButtonGroup}
-                        key="start"
-                        id={`dropdown-button-drop-start`}
-                      />
+                        <Dropdown.Toggle
+                          as={"CustomToggle"}
+                          id="dropdown-custom-toggle"
+                        >
+                          <img
+                            src="https://cdn4.iconfinder.com/data/icons/avatars-xmas-giveaway/128/batman_hero_avatar_comics-512.png"
+                            alt="Logo"
+                            width="30"
+                            height="30"
+                            className="d-inline-block align-text-top"
+                          />
+                        </Dropdown.Toggle>
+                      </Dropdown>
                     </Col>
                   </Row>
                 </Container>
