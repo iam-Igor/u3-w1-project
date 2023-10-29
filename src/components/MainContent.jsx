@@ -64,6 +64,13 @@ class MainContent extends Component {
           isThereAnError: true,
           errorToShow: err.toString(),
         });
+        if (err.toString().includes("TypeError")) {
+          this.setState({
+            errorToShow: "No results",
+          });
+        } else if (this.props.search === "") {
+          this.setState({ isThereAnError: false });
+        }
       });
   };
 
@@ -107,7 +114,7 @@ class MainContent extends Component {
             </>
           )}
 
-          {/* PER OGNI ROW MAPPO L'ARRAY CORRISPONDENTE */}
+          {/* PER OGNI COMPONENT MAPPO PASSO NELLA PROP L'ARRAY CORRISPONDENTE*/}
           <h1 className="text-white fs-4 mb-3">Based on your activity</h1>
           {this.state.isLoading && (
             <div className="text-center">

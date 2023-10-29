@@ -1,6 +1,8 @@
 import { Row, Col } from "react-bootstrap";
 import { Component } from "react";
 
+// OGNI GALLERY RICEVE TRAMITE PROP L'ARRAY DA MAPPARE
+
 class Gallery extends Component {
   render() {
     return (
