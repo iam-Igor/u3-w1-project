@@ -4,15 +4,18 @@ import "./App.css";
 import Myheader from "./components/MyHeader";
 import MainContent from "./components/MainContent";
 import MyFooter from "./components/MyFooter";
+import { Route, BrowserRouter as Router, Routes } from "react-router-dom";
+import AccountPage from "./components/AccountPage";
 
 function App() {
   return (
-    <div className="container-fluid p-0 bg-black">
-      <MyNavbar />
-      {/* <Myheader /> */}
-      {/* <MainContent /> */}
-      <MyFooter />
-    </div>
+    <Router>
+      <Routes>
+        <Route path="/" element={<MyNavbar />} />
+        {/* Altri componenti come <MyHeader /> e <MainContent /> */}
+        <Route path="/Account" element={<AccountPage />} />
+      </Routes>
+    </Router>
   );
 }
 

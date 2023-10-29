@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import { Col, Container, Row, Spinner, Alert } from "react-bootstrap";
 import Gallery from "./Gallery";
+import MyFooter from "./MyFooter";
 
 class MainContent extends Component {
   // INIZIALIZZO TANTI ARRAY VUOTI QUANTE SONO LE ROW DA VISUALIZZARE NEL MAIN
@@ -47,7 +48,7 @@ class MainContent extends Component {
       .then((data) => {
         console.log(data);
         this.setState({
-          // STATE NAME ASSUMERA IL VALORE DESIDERATO
+          // STATE NAME ASSUMERA IL VALORE DESIDERATO ATTRAVERSO I PARAMETRI DELLA SUA FUNZIONE PADRE
           [StateName]: data.Search.map((movie) => ({
             Title: movie.Title,
             Year: movie.Year,
@@ -89,12 +90,12 @@ class MainContent extends Component {
 
   render() {
     return (
-      <main className="mb-5">
+      <main className="mb-5 bg-black">
         {this.state.isThereAnError && (
           <Alert variant="danger">{this.state.errorToShow}</Alert>
         )}
 
-        <Container fluid className="mt-3">
+        <Container fluid>
           {this.state.isLoading && (
             <div className="text-center">
               <Spinner animation="border" variant="danger" />
@@ -155,6 +156,7 @@ class MainContent extends Component {
           <h1 className="text-white fs-4 mb-3">Watch Again</h1>
           <Gallery data={this.state.Search5} />
         </Container>
+        <MyFooter />
       </main>
     );
   }

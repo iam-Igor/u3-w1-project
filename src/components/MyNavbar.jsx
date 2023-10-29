@@ -2,6 +2,7 @@ import { Component } from "react";
 import { Col, Container, Row, Navbar, Dropdown, Form } from "react-bootstrap";
 import MainContent from "./MainContent";
 import Myheader from "./MyHeader";
+import { Link } from "react-router-dom";
 
 class MyNavbar extends Component {
   state = {
@@ -91,7 +92,7 @@ class MyNavbar extends Component {
                     <Col className="p-0">
                       <Dropdown drop="start">
                         <Dropdown.Menu>
-                          <Dropdown.Item eventKey="1" href="account.html">
+                          <Dropdown.Item eventKey="1" as={Link} to="/Account">
                             Account
                           </Dropdown.Item>
                           <Dropdown.Item eventKey="2" href="#">
